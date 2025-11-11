@@ -1,0 +1,1 @@
+Bit level opeartions are very important specifically in Embedded system

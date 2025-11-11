@@ -1,0 +1,25 @@
+1) Pre processor:
+Handle directives like #include, #define .#ifdef  etc
+Output: Pure C file, with all MACRO expands and including libs
+
+2)Compilation
+Error checking (Syntax), 
+Optimization,remove dead code, loops which are unroalling 
+Warning for suspicious code,
+Finally Convert into assembly code (Instruction - Human Readable form like 8085 MOVE,COPY,LDA etc..)
+Output: Assembly File (.s, .asm)
+
+3)Assembler:
+Convert assembly code into Machine code, binary format 1,0 which machine will execute.
+Output Object file, (.o, .obj)
+
+4)Linker: Combined all libs object file, other object files, into one executable
+Also resolve function call,var reference. Assign Address, entry address of the function (by linker script through .map file)
+Output: Executable bin (.bin, .elf,.hex) 
+
+FAQ: Why size of .bin, .elf or .hex file are different?
+1) .elf file contains CODE + DATA DEBUG SYMBOL + ADDRESS - Big size (use for full debugging with execution)
+2) .bin file - contains only binary executable code, only actual bytes to be flashed (Typical use : Flashing controller)
+3) .hex - Address + Data + Checksum  - Typically use loading through bootloader or programmer
+
+So, size difference because of METADATA, The controller memory usage is same regardless of file format.

@@ -1,0 +1,14 @@
+char x = '1' + 2   ??
+what is value of x here ?
+Output is '3' in character form
+
+Here is How...
+What compiler do is
+
+ASCII('1') + 2
+49 + 2 = 51
+
+And when assign to x--
+it stores value '3' into x  which is ASCII of 51
+
+

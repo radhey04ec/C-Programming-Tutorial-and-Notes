@@ -1,28 +1,42 @@
-//This Example demonstarte correct method to use pointer (Note : Below code may not work, it is for demo purpose only)
-//Jaydeep Shah <radhey04ec@gmail.com>
+// This example demonstrates the correct method to use pointers.
+//Note: The code below is for explanation only and may not run as-is.
+//Author: Jaydeep Shah <radhey04ec@gmail.com>
 
 /*
-In the example below, I have created a character pointer intended to point-out user input data at runtime.
-However, upon compiling this code, you may not encounter any errors; yet, during execution, the program may either crash or yield incorrect data. 
-There are two types of memory locations: allocated (reserved by variables) and free (non-allocated). 
-Accessing or utilizing a non-allocated location can lead to incorrect results, segmentation faults, or program crashes. 
+In the example below, a character pointer is used to handle user input data at runtime.
+The code might compile without errors, but during execution, it could crash or produce unexpected results. This happens because of how memory is managed in C.
 
-1) When we declare ch_array[n], memory block corresponding to "n" is allocated in RAM, and the CPU will not permit allocation of same memory fo any other variables. 
-2) The functions fgets() or gets() only utilize the starting location and will sequentially store data from that point onward. 
-3) Here char *ch_pointer is initialized to point to a random location in RAM, attempting to access a non-allocated location with gets() or fgets() may result in a runtime error. 
-4) Therefore, pointers should only be used when memory has already been allocated in RAM, It will allowing us to utilize that location for subsequent processing.
+In C, memory is divided into two types:
+1) Allocated memory — reserved by variables or functions.
+2) Free memory — unallocated space that should not be accessed directly.
 
-But when we use malloc() type function, amount of memory reserve on HEAP RAM and it's starting location will be stored in pointer, and that is safe way.
+Accessing or using non-allocated memory can cause incorrect results, segmentation faults, or program crashes.
+
+Key Points:
+1) When we declare an array like `char ch_array[n];`, memory for 'n' bytes is properly allocated in RAM. 
+The CPU ensures that the same memory block is not reused by another variable.
+
+2) Functions like `fgets()` or `gets()` take the *starting address* of the memory block and then store input data sequentially from that point.
+
+3) If we declare a pointer like `char *ch_pointer;` without assigning it a valid memory address, it points to a random location in RAM.
+   Using such an uninitialized pointer with `gets()` or `fgets()` may cause a runtime error or crash.
+
+4) Therefore, pointers should only be used with valid, allocated memory. 
+   This ensures the pointer safely accesses a known location in RAM.
+
+To safely allocate memory at runtime, functions like `malloc()` (or `calloc()`) can be used. 
+They reserve space on the HEAP, and the function returns the starting address of that memory block, which can be safely stored in a pointer.
 */
 
-#include<stdio.h>
 
+#include<stdio.h>
+#include<string.h>
 int main()
 {
 	
 	//-------------------------------------------------------------------------------------------------
 	//Variable declarations
-	char *ch_pointer;				//Pointer to point character type chunks - no memory allocated
+	char *ch_pointer;				//Pointer to point character type chunks - no memory allocation for storing data
 	char ch_array[50];				//Array - 50 bytes allocated on STACK
 
 	//1) Store data into ARRAY
@@ -32,13 +46,13 @@ int main()
 	
 	//2) Wrong method !!! , don't use pointer if it has no valid location, or which is not pointing toward allocated/ reserved chunk of stack/heap
 	printf("Enter String (it will be stored using pointer) = ");
-	gets(ch_pointer);
+	gets(ch_pointer);                                                //Crash point of code....
 	
 		
 	//Lets print string
-	printf("\n\nString stored by pointer = ");
-	puts(ch_pointer);
 	printf("\n\nString stored by ARRAY = =");
 	puts(ch_array);
+	printf("\n\nString stored by pointer = ");
+	puts(ch_pointer);
 	return 0;
 }

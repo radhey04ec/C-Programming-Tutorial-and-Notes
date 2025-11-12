@@ -4,22 +4,38 @@
 //Jaydeep Shah <radhey04ec@gmail.com>
 
 /*
-gets(): This function accepts a starting point from an allocated location in either the Stack or Heap, essentially taking a character pointer as its input. 
-        From this starting point, it sequentially stores characters one by one.
+gets():
+---------
+The `gets()` function accepts a starting address from an allocated memory location, either on the Stack or the Heap. 
+It takes a character pointer as its input and stores characters sequentially starting from that address.
 
-Consider the declaration of char x[10] in the code, which allocates 10 bytes in RAM. 
-Out of these, 9 bytes can be utilized for storing string data, with the remaining byte reserved for the null terminator '\0'.
-However, if a user inputs more than 10 characters, the gets() function will continue to write beyond the allocated 10 bytes, which poses a significant risk. 
+Example:
+---------
+When we declare `char x[10];`, the compiler allocates 10 bytes in RAM.
+Out of these, 9 bytes can be used to store actual string data, while the last byte is reserved for the null terminator `'\0'`.
 
-There are two primary disadvantages to this method:
-1) The gets() function may overwrite memory values beyond the 10-byte limit, potentially affecting other variables that are allocated in that memory space.
-2) The null terminator '\0' may be lost, which is crucial for indicating the end of the string.
+?? Problem:
+------------
+If the user enters more than 9 characters (excluding '\0'), the `gets()` function will continue writing beyond the allocated memory limit.  
+This causes **buffer overflow**, which is dangerous.
 
-As a result, this can lead to unpredictable behavior.
+Disadvantages:
+---------------
+1) `gets()` may overwrite memory beyond the allocated limit, possibly corrupting other variables stored nearby.
 
-fgets(): Syntax --> fgets(character pointer, size, stdin) 
-In this case, the size is specified as an argument to the function, making it a safer option to use.
-It only store size-1 characters, last byte reserve for NULL Termination
+2) The null terminator `'\0'` might be lost, which is required to mark the end of the string. Without it, string operations (like `printf`, `strlen`, etc.) can behave unpredictably.
+
+As a result, using `gets()` can lead to undefined or unsafe behavior.
+
+----------------------------------------------------
+fgets():
+---------
+Syntax ? `fgets(character_pointer, size, stdin)`
+
+Unlike `gets()`, the `fgets()` function is safer because the maximum number of characters to be read is specified by the `size` argument.
+It reads at most `size - 1` characters and automatically reserves the last byte for the null terminator `'\0'`.
+
+Hence, `fgets()` helps prevent buffer overflow and ensures string safety in C programs.
 */
 
 
@@ -30,7 +46,12 @@ int main()
 	char test[10];
 	
 	printf("Enter string : ");
-	fgets(test,10,stdin);
+	/*
+	- Only **9 characters** from user input will be stored in the array.
+	- The **10th byte** is automatically used for the null terminator `'\0'`.
+	- If the user enters more than 9 characters, the extra input is ignored.
+	*/
+	fgets(test,10,stdin);					
 	
 	printf("\n\nStored string is = ");
 	puts(test);

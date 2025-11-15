@@ -6,7 +6,7 @@ NULL POINTER - Its point to nothing, assign 0 memory ADD
 - HELP to detect access of invalid memory access
 - Useful error handling
 - Best practice is after memory free, assign NULL to pointer
-- Note if derefernce NULL pointer, higher chance of segmentation fault,program crash
+- Note: if derefernce NULL pointer, higher chance of segmentation fault,program crash
 
 void pointer - Genric pointer, that can store address of any datatype
 - It must be cast to correct type during dereferencing.

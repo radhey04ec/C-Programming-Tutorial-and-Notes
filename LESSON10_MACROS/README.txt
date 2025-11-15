@@ -9,7 +9,7 @@ Unknown behavior because repeated evaluation
 If user pass following thing:
 int a = 10
 square(++a) --- (++a   * ++a)
-            --- (11 * 12) 		--  Multiple time increment
+            --- (11 * 11) 		--  Multiple time increment
 
 
 2)Prcedence issue

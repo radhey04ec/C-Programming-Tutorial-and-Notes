@@ -19,7 +19,7 @@ These unused bytes = padding.
 Padding ensures each member starts at a correctly aligned address.
 
 This is because CPU reads only aligned data fast.
-If a 4-byte int starts at odd address (ex: address 1), CPU must do.
+If a 4-byte int starts at odd address (ex: address 1), CPU need extra clock cycle.
 
 If memory optimization is case you can use following directives to turn off padding
 #pragma pack(1)

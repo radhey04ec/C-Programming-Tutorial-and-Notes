@@ -11,7 +11,7 @@ __LINE__    Retrun line number of file
 
 //-------------------------------------------------------------------------------------------------
 //MACRO - Store line number and file name if pointer is NULL
-#define CHECK_NULL(pointer)		if(pointer	== 	NULL) {printf("\nPointer is NULL - File name = %s, line number = %d",__FILE__,__LINE__); return;}
+#define CHECK_NULL(pointer)		if(pointer	== 	NULL) {printf("\nPointer is NULL - File name = %s, line number = %d",__FILE__,__LINE__);}
 
 
 int main()

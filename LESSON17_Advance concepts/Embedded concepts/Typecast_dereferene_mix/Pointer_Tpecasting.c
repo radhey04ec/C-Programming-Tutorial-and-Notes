@@ -52,7 +52,8 @@ int main()
 	//Now lets use with 8BIT
 	ptr 					= NULL;
 	ptr						= &GPIO_8BIT_REG;
-		printf("\nValue of 8 bit REG = %d",*(GPIO_8BIT_REG_t *)ptr);
+	
+	printf("\nValue of 8 bit REG = %d",*(GPIO_8BIT_REG_t *)ptr);
 	
 	return 0;
 }

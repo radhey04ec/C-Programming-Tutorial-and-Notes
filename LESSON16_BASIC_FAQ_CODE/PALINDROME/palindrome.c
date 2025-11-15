@@ -15,11 +15,11 @@ int main()
 	printf("Enter string = ");
 	fgets(data,50,stdin);
 	length = strlen(data);
-	printf("\nString length = %d\n",length);
+	printf("\nString length = %d\n",length);  //String length with Null termination - Ex: "Jay" strig length is 4
 	
 	int i = 0, j = 0,flag  = 0;
 	//i = length - 2, to avoid Null Termination character and because array follow zero indexing
-	for(i = (length - 2); j < i; i--,j++)
+	for(i = (length - 2); j <= i; i--,j++)
 	{
 		if(data[i] != data[j])
 		{
